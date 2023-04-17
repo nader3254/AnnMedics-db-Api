@@ -1,31 +1,31 @@
 [
 	{
 		"name": "ahmed",
-		"age": "57",
+		"age": 57,
         "position":"doctor",
         "hospital":"virtual hospital"
 	},
     	{
 		"name": "amr",
-		"age": "24",
+		"age": 24,
         "position":"doctor",
         "hospital":"mansoura hospital"
 	},
     	{
 		"name": "sameh",
-		"age": "30",
+		"age": 30,
         "position":"doctor",
         "hospital":"cairo hospital"
 	},
     	{
 		"name": "ibrahim",
-		"age": "38",
+		"age": 38,
         "position":"doctor",
         "hospital":"zagazig hospital"
 	},
     	{
 		"name": "tamer",
-		"age": "25",
+		"age": 25,
         "position":"doctor",
         "hospital":"giza hospital"
 	}
