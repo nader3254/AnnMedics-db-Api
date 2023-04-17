@@ -1,0 +1,24 @@
+{
+  "name": "ann-api-db",
+  "version": "1.0.0",
+  "description": "this is an api for AnnMedics project to handle database",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/nader3254/AnnMedics-db-Api.git"
+  },
+  "author": "Nader Hany",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/nader3254/AnnMedics-db-Api/issues"
+  },
+  "homepage": "https://github.com/nader3254/AnnMedics-db-Api#readme",
+  "dependencies": {
+    "express": "^4.18.2",
+    "mongodb": "5.2",
+    "mongoose": "^7.0.3"
+  }
+}
