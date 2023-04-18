@@ -27,10 +27,14 @@ app.get("/:id", users.getUser_id);
 app.put("/:id", users.updateUser);
     
 /**
- * for DELETE url/users
+ * for DELETE url/users/<id>
  */
 app.delete("/:id", users.deleteUser);
 
+/**
+ * for DELETE url/users
+ */
+app.delete("/", users.deleteAllUser);
 
 module.exports = app;
 

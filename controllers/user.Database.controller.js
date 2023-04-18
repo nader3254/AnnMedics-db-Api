@@ -48,6 +48,7 @@ const CreateUser = async (req, res) =>
     } catch (err)
     {
         console.log("error: ", err);
+        res.status(400).send("Error retrieving user");
     }
 }
 
@@ -59,18 +60,24 @@ const CreateUser = async (req, res) =>
  */
 const getAllUsers = async (req, res) =>
 {
+    try {
+        allowPermissions(res, "OPTIONS, GET");
+        const newUser = await UserModel.find();
+        console.log(newUser);
+        res.write(JSON.stringify(newUser));
+        res.end("");
+    }catch (err)
+    {
+        console.log("error: ", err);
+        res.status(400).send("Error retrieving user");
+    }
 
-    allowPermissions(res, "OPTIONS, GET");
-    const newUser = await UserModel.find();
-    console.log(newUser);
-    res.write(JSON.stringify(newUser));
-    res.end("");
 }
 
 /**
  * this function will be used for
  * GET url/users/:id
- * use it like this url/users/<value>
+ * use it like this url/users/<id>
  * @param { paramter for the request } req 
  * @param { paramter for the response } res 
  */
@@ -89,37 +96,86 @@ let getUser_id = async (req, res) => {
     }
     catch(err) {
     console.error(err);
-    res.status(500).send("Error retrieving user");
+    res.status(400).send("Error retrieving user");
   }
 }
   
 /**
  * this function will be used for
- * GET url/users/
+ * PUT url/users/<id>
  * @param { paramter for the request } req 
  * @param { paramter for the response } res 
  */
 const updateUser = async (req, res) =>
 {
+     try {
+     
+       // let __id = new ObjectId(ParseID(req.params.id));
+        let __id = new ObjectId(req.params.id);
+        let tmpObj = await UserModel.findOneAndUpdate({ "_id": __id },req.body);
+        console.log(tmpObj);
+        res.write(JSON.stringify(tmpObj));
+        res.end("");
+    }
+    catch(err) {
+    console.error(err);
+    res.status(400).send("Error retrieving user");
+  }
+    
     
 }
  
 /**
  * this function will be used for
- * GET url/users/
+ * DELETE url/users/<id>
  * @param { paramter for the request } req 
  * @param { paramter for the response } res 
  */
 const deleteUser = async (req, res) =>
 {
-    
+    try
+    {
+       // let __id = new ObjectId(ParseID(req.params.id));
+        let __id = new ObjectId(req.params.id);
+        let tmpObj = await UserModel.deleteOne({ "_id": __id });
+        console.log(tmpObj);
+        res.write("deleteded successfully");
+        res.end("");
+    }
+    catch(err) {
+    console.error(err);
+    res.status(400).send("Error retrieving user");
+  }
 }
     
-
+/**
+ * this function will be used for
+ * DELETE url/users/
+ * @param { paramter for the request } req 
+ * @param { paramter for the response } res 
+ */
+const deleteAllUser = async (req, res) =>
+{
+    try
+    {
+       // let __id = new ObjectId(ParseID(req.params.id));
+        let __id = new ObjectId(req.params.id);
+        let tmpObj = await UserModel.deleteMany({ });
+        console.log(tmpObj);
+        res.write("deleted successfully");
+        res.end("");
+    }
+    catch(err) {
+    console.error(err);
+    res.status(400).send("Error retrieving user");
+  }
+}
+   
 module.exports = {
     CreateUser,
     getAllUsers,
     getUser_id,
     updateUser,
+    deleteAllUser,
     deleteUser
 }
