@@ -1,4 +1,3 @@
-const req = require('express/lib/request');
 const UserModel = require('../models/users.model');
 
 
@@ -10,13 +9,23 @@ function allowPermissions(res,option)
   res.setHeader("Access-Control-Allow-Methods",option);
   res.setHeader("Access-Control-Allow-Headers", "*");
 }
+
+
 const CreateUser = async (req, res) =>
 {
+    try
+    {
+        //allowPermissions(res, "OPTIONS, POST");
+        console.log( req.body);
+        const newUser = new UserModel(req.body);
+        await UserModel.create(newUser);
+        res.send("Customer added");
+        res.end()
 
-    allowPermissions(res, "OPTIONS, put");
-    const newUser = UserModel.create(req.body);
-    res.write(JSON.stringify(newUser));
-    res.end();
+    } catch (err)
+    {
+        console.log("error: ", err);
+    }
 }
 const getAllUsers = async (req, res) =>
 {
