@@ -1,6 +1,11 @@
 const UserModel = require('../models/users.model');
 
-
+/**
+ * this function will be used for
+ * allowing permissions for ex: react and flutter apps
+ * @param { paramter for the request } req 
+ * @param { paramter for the response } res 
+ */
 function allowPermissions(res,option)
 {
   // Set CORS headers
@@ -20,11 +25,11 @@ const CreateUser = async (req, res) =>
 {
     try
     {
-        //allowPermissions(res, "OPTIONS, POST");
+        allowPermissions(res, "OPTIONS, POST");
         console.log( req.body);
         const newUser = new UserModel(req.body);
         await UserModel.create(newUser);
-        res.send("Customer added");
+        res.send("Customer added successfully");
         res.end()
 
     } catch (err)
@@ -32,16 +37,61 @@ const CreateUser = async (req, res) =>
         console.log("error: ", err);
     }
 }
+
+/**
+ * this function will be used for
+ * GET url/users/
+ * @param { paramter for the request } req 
+ * @param { paramter for the response } res 
+ */
 const getAllUsers = async (req, res) =>
 {
 
     allowPermissions(res, "OPTIONS, GET");
-    const newUser = await UserModel.find({name:"ahmed"});
+    const newUser = await UserModel.find();
     console.log(newUser);
-    //res.write(newUser);
-    res.end("unknown");
+    res.write(JSON.stringify(newUser));
+    res.end("");
 }
+
+/**
+ * this function will be used for
+ * GET url/users/
+ * @param { paramter for the request } req 
+ * @param { paramter for the response } res 
+ */
+const getUser_id = async (req, res) =>
+{
+    
+}
+  
+/**
+ * this function will be used for
+ * GET url/users/
+ * @param { paramter for the request } req 
+ * @param { paramter for the response } res 
+ */
+const updateUser = async (req, res) =>
+{
+    
+}
+ 
+/**
+ * this function will be used for
+ * GET url/users/
+ * @param { paramter for the request } req 
+ * @param { paramter for the response } res 
+ */
+const deleteUser = async (req, res) =>
+{
+    
+}
+    
+
 module.exports = {
     CreateUser,
-    getAllUsers
+    getAllUsers,
+    getUser_id,
+    updateUser,
+    deleteUser
 }

@@ -21,7 +21,6 @@ app.get("/", users.getAllUsers);
  */
 app.get("/:id", users.getUser_id);
 
-
 /**
  * for PUT url/users/:id
  */
@@ -30,7 +29,7 @@ app.put("/:id", users.updateUser);
 /**
  * for DELETE url/users
  */
-app.delete("/:id", deleteUser);
+app.delete("/:id", users.deleteUser);
 
 
 module.exports = app;
