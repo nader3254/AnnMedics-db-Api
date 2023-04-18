@@ -1,5 +1,18 @@
-const UserModel = require('../models/users.model');
 
+
+const UserModel = require('../models/users.model');
+const { ObjectId } = require('mongodb');
+
+/**
+ * 
+ * @param {this should be req.params.id} rawID 
+ * @returns the parsed id
+ */
+function ParseID(rawID)
+{
+        let id = rawID.replace("id=", ":");   
+        return newid = id.substring(2, id.length - 1); 
+}
 /**
  * this function will be used for
  * allowing permissions for ex: react and flutter apps
@@ -56,13 +69,28 @@ const getAllUsers = async (req, res) =>
 
 /**
  * this function will be used for
- * GET url/users/
+ * GET url/users/:id
+ * use it like this url/users/<value>
  * @param { paramter for the request } req 
  * @param { paramter for the response } res 
  */
-const getUser_id = async (req, res) =>
-{
-    
+let getUser_id = async (req, res) => {
+
+   // let __id = new ObjectId("643dfa855184363f2e6eaefd"); ok
+   // let __id = req.params.id;
+    try {
+     
+       // let __id = new ObjectId(ParseID(req.params.id));
+        let __id = new ObjectId(req.params.id);
+        let tmpObj = await UserModel.find({ "_id": __id });
+        console.log(tmpObj);
+        res.write(JSON.stringify(tmpObj));
+        res.end("");
+    }
+    catch(err) {
+    console.error(err);
+    res.status(500).send("Error retrieving user");
+  }
 }
   
 /**
