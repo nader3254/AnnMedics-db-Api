@@ -9,13 +9,21 @@ const url = "mongodb+srv://nader:aabbccdd@cluster0.miyrein.mongodb.net/annMedics
  console.log("connecting to AnnMedics DataBase.......\n");
     mongoose.connect(url/*, { useNewUrlParser: true  ,useUnifiedTopology: true}*/).then(
         () => {
-
             console.log("connected to AnnMedics DataBase successfully.......\n");
         }
     ).catch(() => {
     console.log("failed to connect to AnnMedics DataBase ,try again later .......\n");
     }
     );
+
+
+module.exports = mongoose;
+
+
+
+
+
+
 
 
 // function checkDBConnection()
@@ -54,12 +62,6 @@ const url = "mongodb+srv://nader:aabbccdd@cluster0.miyrein.mongodb.net/annMedics
 // {    
 //     return mongoose;
 // }
-module.exports = mongoose;
-
-
-
-
-
 // const { MongoClient, ServerApiVersion } = require('mongodb');
 // const uri = "mongodb+srv://nader:aabbccdd@cluster0.miyrein.mongodb.net/?retryWrites=true&w=majority";
 

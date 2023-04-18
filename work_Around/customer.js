@@ -24,7 +24,14 @@ const Schema = mongoose.Schema;
      unique: true,
    },
  });
+// const customerSchema = new Schema({
 
+//     "name": {    type: String,  required: false,unique: true},
+//     "age": {     type: String,  required: false,unique: false},
+//     "position":{ type: String,  required: false,unique: false},
+//     "hospital":{ type: String,  required: false,unique: false},
+
+// });
 const Customer = mongoose.model("aRX5Rbcd", customerSchema);
 
 module.exports = Customer;

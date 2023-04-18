@@ -10,7 +10,12 @@ function allowPermissions(res,option)
   res.setHeader("Access-Control-Allow-Headers", "*");
 }
 
-
+/**
+ * this function will be used for 
+ *  POST url/users
+ * @param { paramter for the request } req 
+ * @param { paramter for the response } res 
+ */
 const CreateUser = async (req, res) =>
 {
     try
