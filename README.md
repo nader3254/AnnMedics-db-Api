@@ -8,7 +8,6 @@ run the following command :
  
 ```
   node server.js
-  
 ```
 
 ## How To Use it
@@ -21,7 +20,6 @@ to get all the users in the database
 
 ```c
  http://localhost:8085/users/
- 
 ```
 
 
@@ -31,7 +29,6 @@ to get one of the users in the database by id
 
 ```c
  http://localhost:8085/users/<id>
- 
 ```
 
 ### PUT ONE USER :
@@ -40,7 +37,6 @@ to update one user on the database
 
 ```c
  http://localhost:8085/users/<id>
- 
 ```
 
 ### DELETE ONE USER :
@@ -49,7 +45,6 @@ to delete one user on the database
 
 ```c
  http://localhost:8085/users/<id>
- 
 ```
 
 ### DELETE ALL USERs :
@@ -58,5 +53,4 @@ to delete all users on the database
 
 ```c
  http://localhost:8085/users/
- 
 ```
